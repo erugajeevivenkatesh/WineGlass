@@ -77,7 +77,7 @@ public class TouhControl : MonoBehaviour
                 SetTouchandReleasestatus(IsTouched);
                 IsTouched = false;
                 mglassmanager.HintActivator(false);
-                mglassmanager.CallRayIdentifier();
+              //  mglassmanager.CallRayIdentifier();
             //    StartCoroutine(WaitForAnotherGlasssRealease());
             }
         }

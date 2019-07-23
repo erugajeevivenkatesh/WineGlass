@@ -162,14 +162,14 @@ public class GlassManageMent : MonoBehaviour
 
     public void CallRayIdentifier()
     {
-        StartCoroutine(Waitsometime());
+      //  StartCoroutine(Waitsometime());
     }
 
     IEnumerator Waitsometime()
     {
         callonlyOnce = true;
         setRaycastDistance(0f);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         {
             setRaycastDistance(DefaultRaycastDistance);
             callonlyOnce = false;
