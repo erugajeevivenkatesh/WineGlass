@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +14,8 @@ public class PanelControlS : MonoBehaviour
 
     [SerializeField] private GameObject perfectlyplacedTextPanel;
     [SerializeField] private GameObject particelEffect;
-  
+
+    private bool RunOnlyOnce;
 
 
 
@@ -24,6 +25,7 @@ public class PanelControlS : MonoBehaviour
 
 
         perfectlyplacedTextPanel.SetActive(false);
+        GameStarted();
         if (getCurrentLevel() == 0) 
         {
             
@@ -63,7 +65,8 @@ public class PanelControlS : MonoBehaviour
 
     public void  SetGameOverMenu()
     {
-        Debug.Log("Game Over");
+        //  Debug.Log("Game Over");
+        GameOverStatistics();
         GameOvePanel.SetActive(true);
         MainmenuPanel.SetActive(false);
         GameHint.SetActive(false);
@@ -78,6 +81,7 @@ public class PanelControlS : MonoBehaviour
         LevelComplete.SetActive(true);
         GameHint.SetActive(false);
         TouchControlPanel.SetActive(false);
+        LevelCompletestatistics();
     }
     public void SetMenuLevel()
     {
@@ -116,7 +120,6 @@ public class PanelControlS : MonoBehaviour
     public void SetperfectlyPlacedText(GameObject mgameobj)
     {
 
-
     var PerfectGameObejct=    Instantiate(perfectlyplacedTextPanel, mgameobj.transform.position, Quaternion.identity);
         Instantiate(particelEffect, mgameobj.transform.position, Quaternion.identity);
         if  (!PerfectGameObejct.activeInHierarchy)
@@ -125,6 +128,33 @@ public class PanelControlS : MonoBehaviour
         }
 
     }
+
+    private void GameStarted()
+    {
+     
+            Debug.Log("Game started --- Current level is---> " +( getCurrentLevel()+1));
+
+    }
+
+    private void GameOverStatistics()
+    {
+
+        if (!RunOnlyOnce)
+        {
+            RunOnlyOnce = !RunOnlyOnce;
+            Debug.Log("Game Over ----Current level--->" + (getCurrentLevel()+1));
+        }
+    }
+    private  void LevelCompletestatistics()
+    {
+        if (!RunOnlyOnce)
+        {
+            RunOnlyOnce = !RunOnlyOnce;
+            Debug.Log("Level is Completed----->" + (getCurrentLevel()+1));
+          
+        }
+    }
+
 
 
 
